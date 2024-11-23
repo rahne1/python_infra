@@ -8,10 +8,10 @@ from .priority_task import PriorityTask
 
 
 class TaskQueue:
-    def __init__(self, persistence_file="tasks.jsonh"):
+    def __init__(self, persistence_file="tasks.json"):
         self.tasks = []
         self.workers = []
-        self.lock = threading.lock()
+        self.lock = threading.Lock()
         self.persistence_file = persistence_file
         self.load_tasks()
 
@@ -76,4 +76,3 @@ class TaskQueue:
                     )
                     task.timestamp = task_data["timestamp"]
                     heapq.heappush(self.tasks, task)
-)

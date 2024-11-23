@@ -9,7 +9,7 @@ class PriorityTask:
         self.timestamp = time.time()
         self.timeout = timeout
 
-    def __it__(self, other):
-        if self.priority == other.priorty:
+    def __lt__(self, other):
+        if self.priority == other.priority:
             return self.timestamp < other.timestamp
-        return other.priority > self.priority
+        return self.priority > other.priority
